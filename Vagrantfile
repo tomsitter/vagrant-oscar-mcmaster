@@ -15,14 +15,11 @@ $script = <<SCRIPT
 
   #Final Messages
   echo ---------------------------------------------------------
-  echo Thanks for installing OSCAR & OpenMRS.
+  echo Thanks for installing OSCAR 12
   echo This installation is suitable only for training purposes.
   echo ---------------------------------------------------------
-  echo Access OSCAR at http://localhost:8001/Oscar10_12
+  echo Access OSCAR at http://localhost:8001/Oscar12
   echo Login: oscardoc PASSWORD: mac2002 2ndPASSWORD: 1117
-  echo ---------------------------------------------------------
-  echo Access OpenMRS at http://localhost:8001/openmrs
-  echo Login:admin password:Admin123
   echo ---------------------------------------------------------
   echo Access MySQL database at "mysql -u root -p"
   echo password: mysql
@@ -51,9 +48,7 @@ Vagrant.configure("2") do |config|
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine.
-  config.vm.network "forwarded_port", guest: 80, host: 8000, auto_correct: true
   config.vm.network "forwarded_port", guest: 8080, host: 8001, auto_correct: true
-  config.vm.network "forwarded_port", guest: 8787, host: 8002, auto_correct: true
   #config.vm.network "forwarded_port", guest: 8443, host: 8003, auto_correct: true
 
   # Share an additional folder to the guest VM. The first argument is

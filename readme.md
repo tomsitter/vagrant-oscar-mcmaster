@@ -1,6 +1,6 @@
 # Vagrant-OSCAR-McMaster
 
-Vagrant-OSCAR-McMaster is a vagrant script to install two popular open source EMR systems: OpenMRS and OSCAR McMaster for training purposes.
+Vagrant-OSCAR-McMaster is a vagrant script to install OSCAR McMaster 12.1 for training purposes.
 
 ## How to Use
 - Install [VirtualBox for your OS](https://www.virtualbox.org/)
@@ -15,8 +15,7 @@ vagrant up
 > It takes approximately 30 minutes to create the machine initially.
 
 ## Access:
-- Access OpenMRS at http://127.0.0.1:8001/openmrs (mysql password: mysql) (login:admin password:Admin123)
-- Access OSCAR at http://127.0.0.1:8001/Oscar10_12 (Login: oscardoc PASSWORD: mac2002 2ndPASSWORD: 1117)
+- Access OSCAR at http://127.0.0.1:8001/Oscar12 (Login: oscardoc PASSWORD: mac2002 2ndPASSWORD: 1117)
 
 ## Suspend / Power down / Destroy
 To suspend the machine use and resume later
@@ -40,7 +39,6 @@ vagrant up
 
 ### Credits
 - [vagrant-OpenMRS](https://github.com/crolfe/vagrant-OpenMRS)
-- [OpenMRS](http://openmrs.org/)
 - [OSCAR](https://oscar-emr.com/)
 
 ### Disclaimer
