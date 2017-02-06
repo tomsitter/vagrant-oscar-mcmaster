@@ -9,13 +9,13 @@ $script = <<SCRIPT
   echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
   apt-get update
-  apt-get install oracle-java8-installer -y
+  apt-get -y install oracle-java8-installer
 
-  apt-get install wkhtmltopdf -y
+  apt-get -y install wkhtmltopdf
 
-  apt-get install tomcat7 libtomcat7-java unzip curl pgpgpg -y
+  apt-get -y install tomcat7 libtomcat7-java unzip curl pgpgpg
 
-  apt-get install mariadb-server mariadb-client libmysql-java -y
+  apt-get -y install mariadb-server mariadb-client libmysql-java
 
   sudo mysql_secure_installation
 
