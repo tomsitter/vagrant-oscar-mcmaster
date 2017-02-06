@@ -5,25 +5,35 @@
 #By Bell Eapen (nuchange.ca) and Tom Sitter
 
 $script = <<SCRIPT
-  echo Starting mysql...
-  service mysql start
+  echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
+  echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+  apt-get update
+  apt-get install oracle-java8-installer
 
-  #restarting tomcat
-  echo Restarting Tomcat Server...
-  service tomcat6 restart
+  apt-get install wkhtmltopdf
+
+  apt-get install tomcat7 libtomcat7-java unzip curl pgpgpg
+
+  apt-get install mariadb-server mariadb-client libmysql-java
+
+  sudo mysql_secure_installation
+
+  wget http://sourceforge.net/projects/oscarmcmaster/files/Oscar%20Debian%2BUbuntu%20deb%20Package/oscar_emr15-51~508.deb
+
+  sudo dpkg -i oscar_emr15-51~508.deb
 
   #Final Messages
   echo ---------------------------------------------------------
-  echo Thanks for installing OSCAR 12
+  echo Thanks for installing OSCAR 15
   echo This installation is suitable only for training purposes.
   echo ---------------------------------------------------------
-  echo Access OSCAR at http://localhost:8001/Oscar12
+  echo Access OSCAR at http://localhost:8001/oscar
   echo Login: oscardoc PASSWORD: mac2002 2ndPASSWORD: 1117
   echo ---------------------------------------------------------
   echo Access MySQL database at "mysql -u root -p"
   echo password: mysql
   echo ---------------------------------------------------------
-  echo Please visit nuchange.ca for further info.
 
 SCRIPT
 
@@ -66,14 +76,6 @@ Vagrant.configure("2") do |config|
        "--memory", "1536"]
     #v.gui = true
   end
-
- 
-  config.vm.provision :puppet do |puppet|
-    puppet.module_path = "modules"
-    puppet.manifests_path = "manifests"
-    puppet.manifest_file  = "site.pp"
-  end
-
 
   config.vm.provision "shell", inline: $script
 
