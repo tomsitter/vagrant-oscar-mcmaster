@@ -1,9 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-#Installs OpenMRS and OSCAR (Electronic Medical Records Systems)
-#Installs R Studio Server
-#By Bell Eapen (nuchange.ca)
+#Installs OSCAR 15 (Electronic Medical Records Systems)
+#By Bell Eapen (nuchange.ca) and Tom Sitter
 
 $script = <<SCRIPT
   echo Starting mysql...
@@ -37,7 +36,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box = "ubuntu/trusty32"
+  config.vm.box = "ubuntu/xenial64"
   config.vm.boot_timeout = 900
   config.ssh.insert_key = false
 
@@ -49,7 +48,6 @@ Vagrant.configure("2") do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine.
   config.vm.network "forwarded_port", guest: 8080, host: 8001, auto_correct: true
-  #config.vm.network "forwarded_port", guest: 8443, host: 8003, auto_correct: true
 
   # Share an additional folder to the guest VM. The first argument is
   # an identifier, the second is the path on the guest to mount the
