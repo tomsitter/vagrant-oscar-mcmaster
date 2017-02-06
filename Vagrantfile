@@ -69,10 +69,10 @@ Vagrant.configure("2") do |config|
   #config.vm.network :private_network, ip: "192.168.40.10"
 
   config.vm.provider "virtualbox" do |v|
-    v.name = "oscar"
+    v.name = "oscar15"
     v.customize [
        "modifyvm", :id,
-       "--name", "oscar",
+       "--name", "oscar15",
        "--memory", "1536"]
     #v.gui = true
   end
