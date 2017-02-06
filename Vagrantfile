@@ -5,17 +5,21 @@
 #By Bell Eapen (nuchange.ca) and Tom Sitter
 
 $script = <<SCRIPT
-  echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
-  echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
-  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
-  apt-get update
-  apt-get -y install oracle-java8-installer
+  sudo echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
+  sudo echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+  sudo apt-get update
+  
+  echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
+  sudo apt-get -y install oracle-java8-installer
+  sudo echo "export JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> ~/.bashrc
+  sudo source ~/.bashrc
 
-  apt-get -y install wkhtmltopdf
+  sudo apt-get -y install wkhtmltopdf
 
-  apt-get -y install tomcat7 libtomcat7-java unzip curl pgpgpg
+  sudo apt-get -y install tomcat7 libtomcat7-java unzip curl pgpgpg
 
-  apt-get -y install mariadb-server mariadb-client libmysql-java
+  sudo apt-get -y install mariadb-server mariadb-client libmysql-java
 
   sudo mysql_secure_installation
 
@@ -57,7 +61,7 @@ Vagrant.configure("2") do |config|
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine.
-  config.vm.network "forwarded_port", guest: 8080, host: 8001, auto_correct: true
+  config.vm.network "forwarded_port", guest: 8080, host: 8080, auto_correct: true
 
   # Share an additional folder to the guest VM. The first argument is
   # an identifier, the second is the path on the guest to mount the
