@@ -9,13 +9,13 @@ $script = <<SCRIPT
   echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
   apt-get update
-  apt-get install oracle-java8-installer
+  apt-get install oracle-java8-installer -y
 
-  apt-get install wkhtmltopdf
+  apt-get install wkhtmltopdf -y
 
-  apt-get install tomcat7 libtomcat7-java unzip curl pgpgpg
+  apt-get install tomcat7 libtomcat7-java unzip curl pgpgpg -y
 
-  apt-get install mariadb-server mariadb-client libmysql-java
+  apt-get install mariadb-server mariadb-client libmysql-java -y
 
   sudo mysql_secure_installation
 
@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "bento/ubuntu-16.04"
   config.vm.boot_timeout = 900
   config.ssh.insert_key = false
 
